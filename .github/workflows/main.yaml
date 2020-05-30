@@ -11,7 +11,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Run nested catalog notebook with pytest
       run: |
-        docker run -v $PWD:/work -w /work -it esmvfc:esm-vfc-stacks:latest \
+        docker run -v $PWD:/work -w /work esmvfc:esm-vfc-stacks:latest \
           pytest --nbval-lax nested_catalogs_demo/nested_catalogs_demo.ipynb
     # - name: Run nested catalog notebook with pytest
     #   run: |
