@@ -1,0 +1,23 @@
+name: Build PDF
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    container: docker://esmvfc/esm-vfc-stacks:latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run nested catalog notebook with pytest
+      run: pytest --nbval-lax nested_catalogs_demo/nested_catalogs_demo.ipynb
+    - name: Run nested catalog notebook with pytest
+      run: |
+        conda install -y -c conda-forge papermill
+        papermill \
+          nested_catalogs_demo/nested_catalogs_demo.ipynb
+          nested_catalogs_demo/nested_catalogs_demo_output.ipynb
+    - name: Upload notebook
+      uses: actions/upload-artifact@v1
+      with:
+        name: nested_catalogs_demo_output.ipynb
+        path: nested_catalogs_demo/nested_catalogs_demo_output.ipynb
