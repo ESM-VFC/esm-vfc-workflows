@@ -5,7 +5,8 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-18.04
-    container: esmvfc/esm-vfc-stacks:latest
+    container:
+      image: docker://esmvfc/esm-vfc-stacks:latest
       options: --user 1001  # https://github.community/t/how-to-run-action-as-a-non-root-user/17572/2
     steps:
     - uses: actions/checkout@v2
