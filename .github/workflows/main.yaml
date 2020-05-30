@@ -16,7 +16,7 @@ jobs:
     - name: Run nested catalog notebook with papermill
       run: |
         pip install papermill --upgrade
-        papermill \
+        /github/home/.local/bin/papermill \
           nested_catalogs_demo/nested_catalogs_demo.ipynb
           nested_catalogs_demo/nested_catalogs_demo_output.ipynb
     - name: Upload notebook
