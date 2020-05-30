@@ -14,7 +14,7 @@ jobs:
         docker run \
           -v $(pwd):/work \
           -w /work esmvfc/esm-vfc-stacks:latest \
-            pytest --nbval-lax /work/nested_catalogs_demo/nested_catalog_demo.ipynb
+            pytest -v -s --nbval-lax /work/nested_catalogs_demo/nested_catalog_demo.ipynb
     # - name: Run nested catalog notebook with pytest
     #   run: |
     #     conda install -y -c conda-forge papermill
