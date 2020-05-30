@@ -11,10 +11,14 @@ jobs:
     - uses: actions/checkout@v2
     - name: Run nested catalog notebook with pytest
       run: |
+        pwd
+        ls -la
+        touch test1
         docker run \
           -v $GITHUB_WORKSPACE:/work \
           -w /work esmvfc/esm-vfc-stacks:latest \
-            bash -c "cd /work && python -m pytest -v -s --nbval-lax /work/nested_catalogs_demo/nested_catalog_demo.ipynb"
+            bash -c "pwd; ls -la; touch test2;"
+    # cd /work && python -m pytest -v -s --nbval-lax /work/nested_catalogs_demo/nested_catalog_demo.ipynb"
     # - name: Run nested catalog notebook with pytest
     #   run: |
     #     conda install -y -c conda-forge papermill
