@@ -5,30 +5,21 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-18.04
+    container: esmvfc/esm-vfc-stacks:latest
+      options: --user 1001  # https://github.community/t/how-to-run-action-as-a-non-root-user/17572/2
     steps:
-    - name: Pull image
-      run: docker pull esmvfc/esm-vfc-stacks:latest
     - uses: actions/checkout@v2
     - name: Run nested catalog notebook with pytest
       run: |
-        pwd
-        ls -la
-        touch test1
-        docker run \
-          -v $GITHUB_WORKSPACE:/work \
-          -w /work \
-          -u $(id -u $USER) \
-          esmvfc/esm-vfc-stacks:latest \
-            bash -c "pwd; ls -la; touch test2;"
-    # cd /work && python -m pytest -v -s --nbval-lax /work/nested_catalogs_demo/nested_catalog_demo.ipynb"
-    # - name: Run nested catalog notebook with pytest
-    #   run: |
-    #     conda install -y -c conda-forge papermill
-    #     papermill \
-    #       nested_catalogs_demo/nested_catalogs_demo.ipynb
-    #       nested_catalogs_demo/nested_catalogs_demo_output.ipynb
-    # - name: Upload notebook
-    #   uses: actions/upload-artifact@v1
-    #   with:
-    #     name: nested_catalogs_demo_output.ipynb
-    #     path: nested_catalogs_demo/nested_catalogs_demo_output.ipynb
+        python -m pytest -v -s --nbval-lax nested_catalogs_demo/nested_catalog_demo.ipynb
+    - name: Run nested catalog notebook with papermill
+      run: |
+        conda install -y -c conda-forge papermill
+        papermill \
+          nested_catalogs_demo/nested_catalogs_demo.ipynb
+          nested_catalogs_demo/nested_catalogs_demo_output.ipynb
+    - name: Upload notebook
+      uses: actions/upload-artifact@v1
+      with:
+        name: nested_catalogs_demo_output.ipynb
+        path: nested_catalogs_demo/nested_catalogs_demo_output.ipynb
