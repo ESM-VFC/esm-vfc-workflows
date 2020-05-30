@@ -14,7 +14,7 @@ jobs:
         docker run \
           -v $GITHUB_WORKSPACE:/work \
           -w /work esmvfc/esm-vfc-stacks:latest \
-            pytest -v -s --nbval-lax /work/nested_catalogs_demo/nested_catalog_demo.ipynb
+            bash -c "cd /work && python -m pytest -v -s --nbval-lax /work/nested_catalogs_demo/nested_catalog_demo.ipynb"
     # - name: Run nested catalog notebook with pytest
     #   run: |
     #     conda install -y -c conda-forge papermill
