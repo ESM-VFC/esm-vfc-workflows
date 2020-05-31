@@ -17,7 +17,7 @@ def run_notebooks(dir, out):
     dir = Path(dir)
     out = Path(out)
 
-    # find all notebooks in dir
+    # find all notebooks in dir except for those already in out and checkpoints
     notebooks = dir.glob("**/*.ipynb")
     notebooks = filter(lambda f: out.resolve() not in f.resolve().parents, notebooks)
     notebooks = filter(lambda f: ".ipynb_checkpoint" not in str(f), notebooks)
@@ -30,9 +30,7 @@ def run_notebooks(dir, out):
         output_nb.parent.mkdir(parents=True, exist_ok=True)
         try:
             print(f"will run {str(nb)}", flush=True)
-            papermill.execute_notebook(
-                str(nb), str(output_nb), cwd=str(nb.parent), report_mode=True
-            )
+            papermill.execute_notebook(str(nb), str(output_nb), cwd=str(nb.parent))
         except Exception as e:
             print(f"\n{nb} failed", flush=True)
             something_failed = True
