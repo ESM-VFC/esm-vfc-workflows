@@ -15,6 +15,7 @@ jobs:
     #     python -m pytest -v -s --nbval-lax nested_catalogs_demo/nested_catalog_demo.ipynb
     - name: Run nested catalog notebook with papermill
       run: |
+        head -n10 nested_catalogs_demo/nested_catalog_demo.ipynb
         papermill
           --cwd nested_catalogs_demo/ \
           nested_catalogs_demo/nested_catalog_demo.ipynb \
