@@ -15,6 +15,8 @@ jobs:
     #     python -m pytest -v -s --nbval-lax nested_catalogs_demo/nested_catalog_demo.ipynb
     - name: Run nested catalog notebook with papermill
       run: |
+        ls -la
+        which papermill
         head -n10 nested_catalogs_demo/nested_catalog_demo.ipynb
         papermill
           --cwd nested_catalogs_demo/ \
@@ -23,5 +25,5 @@ jobs:
     - name: Upload notebook
       uses: actions/upload-artifact@v1
       with:
-        name: nested_catalogs_demo_output.ipynb
-        path: nested_catalogs_demo/nested_catalogs_demo_output.ipynb
+        name: nested_catalog_demo_output.ipynb
+        path: nested_catalogs_demo/nested_catalog_demo_output.ipynb
