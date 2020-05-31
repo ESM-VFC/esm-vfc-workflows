@@ -28,14 +28,17 @@ def run_notebooks(dir, out):
     for nb in notebooks:
         output_nb = out / nb
         output_nb.parent.mkdir(parents=True, exist_ok=True)
+        print(f"will run {str(nb)}")
         try:
-            print(f"will run {str(nb)}")
             papermill.execute_notebook(
                 str(nb), str(output_nb), cwd=str(nb.parent), report_mode=True
             )
+            nb_success = True
         except Exception as e:
-            print(f"execution of {str(nb)} has failed")
+            nb_success = False
             something_failed = True
+        if not nb_success:
+            print(f"{nb} failed")
 
     sys.exit(something_failed)  # returns 0 if everything worked
 
