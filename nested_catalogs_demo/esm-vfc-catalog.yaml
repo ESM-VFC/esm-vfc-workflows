@@ -1,0 +1,43 @@
+sources:
+  FESOM2_PI_MESH:
+    args:
+      path: 'https://esm-vfc.github.io/esm-vfc-catalogs/catalogs/FESOM2_PI_MESH.yaml'
+    description: ''
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
+  METEOR_cruises:
+    args:
+      path: 'https://esm-vfc.github.io/esm-vfc-catalogs/catalogs/METEOR_cruises.yaml'
+    description: ''
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
+  MOSAIC:
+    args:
+      path: 'https://esm-vfc.github.io/esm-vfc-catalogs/catalogs/MOSAIC.yaml'
+    description: ''
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
+  NEMO_GYRE_Test:
+    args:
+      path: 'https://esm-vfc.github.io/esm-vfc-catalogs/catalogs/NEMO_GYRE_Test.yaml'
+    description: ''
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
+  NEMO_ORCA05_FOCI_Test_Full:
+    args:
+      path: 'https://esm-vfc.github.io/esm-vfc-catalogs/catalogs/NEMO_ORCA05_FOCI_Test_Full.yaml'
+    description: ''
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
+  NEMO_ORCA05_FOCI_Test_Minimal:
+    args:
+      path: 'https://esm-vfc.github.io/esm-vfc-catalogs/catalogs/NEMO_ORCA05_FOCI_Test_Minimal.yaml'
+    description: ''
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
+  NEMO_ORCA05_Test:
+    args:
+      path: 'https://esm-vfc.github.io/esm-vfc-catalogs/catalogs/NEMO_ORCA05_Test.yaml'
+    description: ''
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
