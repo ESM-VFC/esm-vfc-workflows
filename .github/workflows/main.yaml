@@ -12,7 +12,7 @@ jobs:
     - uses: actions/checkout@v1
     - name: Run all notebooks with papermill
       run: |
-        ci/run_all_notebooks.py --dir . --out ci_out/
+        conda activate notebook && ci/run_all_notebooks.py --dir . --out ci_out/
     - name: Upload notebook
       uses: actions/upload-artifact@v1
       if: ${{ always() }}
