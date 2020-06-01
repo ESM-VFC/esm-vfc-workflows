@@ -12,6 +12,7 @@ jobs:
     - uses: actions/checkout@v1
     - name: Run all notebooks with papermill
       run: |
+        bash -c "conda init bash"
         bash -c "conda activate notebook && ci/run_all_notebooks.py --dir . --out ci_out/"
     - name: Upload notebook
       uses: actions/upload-artifact@v1
