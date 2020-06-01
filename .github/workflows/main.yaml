@@ -14,7 +14,7 @@ jobs:
       run: bash -c "conda init bash"
     - name: Run all notebooks with papermill
       run: |
-        bash -c ". ${HOME}/.bashrc && conda activate notebook && ci/run_all_notebooks.py --dir . --out ci_out/"
+        bash -c ". ${HOME}/.bashrc && conda activate notebook && .ci/run_all_notebooks.py --dir . --out ci_out/"
     - name: Upload notebook
       uses: actions/upload-artifact@v1
       if: ${{ always() }}
