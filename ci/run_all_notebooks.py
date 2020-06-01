@@ -22,7 +22,7 @@ def run_notebooks(dir, out):
     notebooks = dir.glob("**/*.ipynb")
     notebooks = filter(lambda f: out.resolve() not in f.resolve().parents, notebooks)
     notebooks = filter(lambda f: ".ipynb_checkpoint" not in str(f), notebooks)
-    notebooks = filter(lambda f: "NOCIRUN" in f.name, notebooks)
+    notebooks = filter(lambda f: "NOCIRUN" not in f.name, notebooks)
     notebooks = sorted(notebooks)
 
     # run all notebooks, keeping track of success
