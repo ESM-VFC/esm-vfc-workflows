@@ -17,10 +17,12 @@ def run_notebooks(dir, out):
     dir = Path(dir)
     out = Path(out)
 
-    # find all notebooks in dir except for those already in out and checkpoints
+    # find all notebooks in dir
+    # except for those already in out, checkpoints, and those marked as NOCIRUN
     notebooks = dir.glob("**/*.ipynb")
     notebooks = filter(lambda f: out.resolve() not in f.resolve().parents, notebooks)
     notebooks = filter(lambda f: ".ipynb_checkpoint" not in str(f), notebooks)
+    notebooks = filter(lambda f: "NOCIRUN" not in f.name, notebooks)
     notebooks = sorted(notebooks)
 
     # run all notebooks, keeping track of success
