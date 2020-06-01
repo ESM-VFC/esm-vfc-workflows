@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-18.04
     container:
       image: docker://esmvfc/esm-vfc-stacks:latest
-      options: --user 1001  # https://github.community/t/how-to-run-action-as-a-non-root-user/17572/2
+      options: --user 1000  # https://github.community/t/how-to-run-action-as-a-non-root-user/17572/2
     steps:
     - uses: actions/checkout@v1
     - name: Initialize conda
